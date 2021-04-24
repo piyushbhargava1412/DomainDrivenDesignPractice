@@ -15,11 +15,13 @@ public class Cart {
     private final UUID id;
     private final List<Item> items;
     private final List<Product> deletedProducts;
+    private boolean isCheckedOut;
 
     public Cart() {
         this.id = UUID.randomUUID();
         this.items = new ArrayList<>();
         this.deletedProducts = new ArrayList<>();
+        this.isCheckedOut = false;
     }
 
     public void addItem(Item item) {
@@ -29,5 +31,16 @@ public class Cart {
     public void removeItem(Item item) {
         items.remove(item);
         deletedProducts.add(item.getProduct());
+    }
+
+    public List <Product> checkout() {
+        this.isCheckedOut = true;
+        List <Product> productList = new ArrayList<>();
+        items.forEach(item -> {
+            for(int i = 0; i < item.getQuantity(); i++) {
+                productList.add(item.getProduct());
+            }
+        });
+        return productList;
     }
 }

@@ -1,24 +1,24 @@
 package com.ddd.practice.application;
 
+import com.ddd.practice.domain.domain_services.OrderService;
 import com.ddd.practice.domain.models.Cart;
 import com.ddd.practice.domain.models.Item;
-import com.ddd.practice.domain.models.Price;
+import com.ddd.practice.domain.domain_services.MarketPrices;
+import com.ddd.practice.domain.models.Order;
 import com.ddd.practice.domain.models.Product;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Currency;
-
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
   private final Cart cart;
-//  private final Cart cart2;
+  private final OrderService orderService;
 
   public Application() {
     this.cart = new Cart();
-//    this.cart2 = new Cart();
+    this.orderService = new OrderService();
   }
 
   public static void main(String[] args) {
@@ -27,27 +27,21 @@ public class Application implements CommandLineRunner {
 
   @Override
   public void run(String... args) {
-    Item item1 =
-        new Item(new Product("IPad Pro", new Price(50000.0, Currency.getInstance("INR"))), 1);
-    Item item2 =
-        new Item(new Product("Hero ink Pen", new Price(5.0, Currency.getInstance("INR"))), 1);
-    Item item3 =
-        new Item(new Product(" GM Cricket bat", new Price(2500.0, Currency.getInstance("INR"))), 2);
+
+    Item item1 = new Item(new Product("IPad Pro", MarketPrices.getDiscountedPriceFor("IPad Pro")), 1);
+    Item item2 = new Item(new Product("Hero ink Pen", MarketPrices.getDiscountedPriceFor("Hero ink Pen")), 1);
+    Item item3 = new Item(new Product("GM Cricket bat", MarketPrices.getDiscountedPriceFor("GM Cricket bat")), 2);
 
     cart.addItem(item1);
     cart.addItem(item2);
     cart.addItem(item3);
+    System.out.println(cart);
 
-//    cart2.addItem(item1);
-//    cart2.addItem(item2);
-//    cart2.addItem(item3);
-
-    cart.removeItem(item1);
-    cart.removeItem(item2);
+    //    cart.removeItem(item1);
+    //    cart.removeItem(item2);
     //    cart.getDeletedProducts().forEach(product -> System.out.println(product.getName()));
 
-    //    System.out.println(cart.equals(cart2));
-
-    System.out.println(cart);
+    Order order = orderService.checkoutCart(cart);
+    System.out.println(order);
   }
 }
