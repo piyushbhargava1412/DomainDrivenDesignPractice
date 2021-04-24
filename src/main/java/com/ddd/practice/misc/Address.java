@@ -6,5 +6,5 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Address {
-    private String city;
+    private final String city;
 }

@@ -10,18 +10,9 @@ public class Price {
     private final Double amount;
     private final Currency currency;
 
-    public Price(Double marketPriceAmount, Currency currency) {
-        this.amount = getDiscountedPrice(marketPriceAmount);
+    public Price(Double amount, Currency currency) {
+        this.amount = amount;
         this.currency = currency;
-    }
-
-    public Price(Price marketPrice) {
-        this.amount = getDiscountedPrice(marketPrice.getAmount());
-        this.currency = marketPrice.getCurrency();
-    }
-
-    private Double getDiscountedPrice(Double baseAmount) {
-        return baseAmount * 0.9;
     }
 
     public Price getDiscountedPrice(double discountRate) {

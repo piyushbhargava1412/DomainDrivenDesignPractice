@@ -40,7 +40,7 @@ public class Application implements CommandLineRunner {
     cart.addItem(item1);
     cart.addItem(item2);
     cart.addItem(item3);
-    //System.out.println(cart);
+    System.out.println(cart);
 
     //    cart.removeItem(item1);
     //    cart.removeItem(item2);
