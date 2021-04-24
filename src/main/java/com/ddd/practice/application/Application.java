@@ -6,9 +6,14 @@ import com.ddd.practice.domain.models.Item;
 import com.ddd.practice.domain.domain_services.MarketPrices;
 import com.ddd.practice.domain.models.Order;
 import com.ddd.practice.domain.models.Product;
+import com.ddd.practice.misc.Account;
+import com.ddd.practice.misc.Address;
+import com.ddd.practice.misc.Customer;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.List;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -35,13 +40,17 @@ public class Application implements CommandLineRunner {
     cart.addItem(item1);
     cart.addItem(item2);
     cart.addItem(item3);
-    System.out.println(cart);
+    //System.out.println(cart);
 
     //    cart.removeItem(item1);
     //    cart.removeItem(item2);
     //    cart.getDeletedProducts().forEach(product -> System.out.println(product.getName()));
 
     Order order = orderService.checkoutCart(cart);
-    System.out.println(order);
+    //System.out.println(order);
+
+    Customer customer = new Customer(List.of(new Account(new Address("Hyderabad"))),new Address("Hyderabad"));
+    customer.updateAddress(new Address("Agra"));
+    System.out.println(customer);
   }
 }
