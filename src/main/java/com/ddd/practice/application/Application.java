@@ -14,11 +14,11 @@ import java.util.Currency;
 public class Application implements CommandLineRunner {
 
   private final Cart cart;
-  private final Cart cart2;
+//  private final Cart cart2;
 
   public Application() {
     this.cart = new Cart();
-    this.cart2 = new Cart();
+//    this.cart2 = new Cart();
   }
 
   public static void main(String[] args) {
@@ -38,14 +38,16 @@ public class Application implements CommandLineRunner {
     cart.addItem(item2);
     cart.addItem(item3);
 
-    cart2.addItem(item1);
-    cart2.addItem(item2);
-    cart2.addItem(item3);
+//    cart2.addItem(item1);
+//    cart2.addItem(item2);
+//    cart2.addItem(item3);
 
-    System.out.println(cart.equals(cart2));
-
-    //    cart.removeItem(item1);
-    //    cart.removeItem(item2);
+    cart.removeItem(item1);
+    cart.removeItem(item2);
     //    cart.getDeletedProducts().forEach(product -> System.out.println(product.getName()));
+
+    //    System.out.println(cart.equals(cart2));
+
+    System.out.println(cart);
   }
 }

@@ -1,8 +1,10 @@
 package com.ddd.practice.domain.models;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class Product {
   private final String name;
   private final Price price;

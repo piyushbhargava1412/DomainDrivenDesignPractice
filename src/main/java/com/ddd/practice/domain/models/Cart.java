@@ -2,6 +2,7 @@ package com.ddd.practice.domain.models;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @EqualsAndHashCode
+@ToString
 public class Cart {
     private final UUID id;
     private final List<Item> items;

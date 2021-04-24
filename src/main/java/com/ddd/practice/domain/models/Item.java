@@ -1,10 +1,11 @@
 package com.ddd.practice.domain.models;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class Item {
-
   private final Product product;
   private final int quantity;
 
