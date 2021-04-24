@@ -13,7 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.List;
+import java.util.Arrays;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -33,9 +33,9 @@ public class Application implements CommandLineRunner {
   @Override
   public void run(String... args) {
 
-    Item item1 = new Item(new Product("IPad Pro", MarketPrices.getDiscountedPriceFor("IPad Pro")), 1);
-    Item item2 = new Item(new Product("Hero ink Pen", MarketPrices.getDiscountedPriceFor("Hero ink Pen")), 1);
-    Item item3 = new Item(new Product("GM Cricket bat", MarketPrices.getDiscountedPriceFor("GM Cricket bat")), 2);
+    Item item1 = new Item(new Product("IPad Pro", MarketPrices.getDiscountedPriceFor("IPad Pro"), 1), 1);
+    Item item2 = new Item(new Product("Hero ink Pen", MarketPrices.getDiscountedPriceFor("Hero ink Pen"), 1), 1);
+    Item item3 = new Item(new Product("GM Cricket bat", MarketPrices.getDiscountedPriceFor("GM Cricket bat"), 1), 2);
 
     cart.addItem(item1);
     cart.addItem(item2);
@@ -47,10 +47,10 @@ public class Application implements CommandLineRunner {
     //    cart.getDeletedProducts().forEach(product -> System.out.println(product.getName()));
 
     Order order = orderService.checkoutCart(cart);
-    //System.out.println(order);
+    System.out.println(order);
 
-    Customer customer = new Customer(List.of(new Account(new Address("Hyderabad"))),new Address("Hyderabad"));
-    customer.updateAddress(new Address("Agra"));
-    System.out.println(customer);
+//    Customer customer = new Customer(Arrays.asList(new Account(new Address("Hyderabad"))),new Address("Hyderabad"));
+//    customer.updateAddress(new Address("Agra"));
+//    System.out.println(customer);
   }
 }

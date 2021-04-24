@@ -8,9 +8,11 @@ import lombok.ToString;
 public class Product {
   private final String name;
   private final Price price;
+  private final double weightInGrams;
 
-  public Product(String name, Price price) {
+  public Product(String name, Price price, double weightInGrams) {
     this.name = name;
     this.price = price;
+    this.weightInGrams = weightInGrams;
   }
 }
