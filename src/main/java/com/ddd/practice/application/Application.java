@@ -33,9 +33,15 @@ public class Application implements CommandLineRunner {
   @Override
   public void run(String... args) {
 
-    Item item1 = new Item(new Product("IPad Pro", MarketPrices.getDiscountedPriceFor("IPad Pro"), 1), 1);
-    Item item2 = new Item(new Product("Hero ink Pen", MarketPrices.getDiscountedPriceFor("Hero ink Pen"), 1), 1);
-    Item item3 = new Item(new Product("GM Cricket bat", MarketPrices.getDiscountedPriceFor("GM Cricket bat"), 1), 2);
+    Item item1 =
+        new Item(new Product("IPad Pro", MarketPrices.getDiscountedPriceFor("IPad Pro"), 200), 1);
+    Item item2 =
+        new Item(
+            new Product("Hero ink Pen", MarketPrices.getDiscountedPriceFor("Hero ink Pen"), 5), 1);
+    Item item3 =
+        new Item(
+            new Product("GM Cricket bat", MarketPrices.getDiscountedPriceFor("GM Cricket bat"), 1000),
+            2);
 
     cart.addItem(item1);
     cart.addItem(item2);
@@ -49,8 +55,9 @@ public class Application implements CommandLineRunner {
     Order order = orderService.checkoutCart(cart);
     System.out.println(order);
 
-//    Customer customer = new Customer(Arrays.asList(new Account(new Address("Hyderabad"))),new Address("Hyderabad"));
-//    customer.updateAddress(new Address("Agra"));
-//    System.out.println(customer);
+    //    Customer customer = new Customer(Arrays.asList(new Account(new Address("Hyderabad"))),new
+    // Address("Hyderabad"));
+    //    customer.updateAddress(new Address("Agra"));
+    //    System.out.println(customer);
   }
 }

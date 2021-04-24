@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class MarketPrices {
     private static final Map <String, Price> marketPriceList = new HashMap<>();
-    private static double DISCOUNT_PERCENTAGE = 0.1;
+    private static final double DISCOUNT_PERCENTAGE = 0.1;
 
     static {
         MarketPrices.addProductPrice("IPad Pro", new Price(50000.0, Currency.getInstance("INR")));
